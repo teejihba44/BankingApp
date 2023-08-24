@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: BankingApplication
+  messages:
+    use-code-as-default-message: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+
+    open-in-view: false
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    view: #if present.
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  datasource:
+    initialization-mode: always
+    url: jdbc:postgresql://localhost:5432/bankingapp
+    username: postgres
+    password: 1234
+
+  mail:
+    protocol: smtp
+    host: smtp.mailtrap.io
+    port: 2525
+    username: 463cb13a135e2f
+    password: d5a8a6b904a111
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+
+server:
+  error:
+    include-message: always
+
+bank-application-properties:
+  jwt-secret: bankAppSecurityKey
+  jwt-expiration-ms: 600000 #10 minutes
+  min-balance-savings: 300
+  transaction-limit-savings: 10
+  max-withdraw-limit: 100000
+  savings-account-interest-rate: 3.5
+  min-balance-allowed-to-close: 100
